@@ -1,0 +1,7 @@
+git_url "git@github.com:xmartlabs/FastlaneDemoCertificates.git"
+
+type "development" # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier ["com.xmartlabs.FastlaneDemo"]
+team_id "6F2G55XL63"
+username "cousillas806@gmail.com" # Your Apple Developer Portal username

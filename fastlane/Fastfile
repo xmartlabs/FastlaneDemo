@@ -1,0 +1,38 @@
+fastlane_version "2.68.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    # cocoapods
+    # carthage
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    run_tests
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    match(type: "appstore")
+    build_app(
+      scheme: "FastlaneDemo",
+      include_bitcode: true
+    )
+    upload_to_testflight
+  end
+
+  desc "Deploy a new version to the App Store"
+  desc "This will also make sure the profile is up to date"
+  lane :release do
+    match(type: "appstore")
+    capture_screenshots
+    build_app(
+      scheme: "FastlaneDemo",
+      include_bitcode: true
+    )
+    upload_to_app_store(force: true)
+  end
+end
